@@ -10,7 +10,7 @@
                 </ul>
                 <div class="tab-content">
                   <div class="tab-pane active" id="tab_1-1">
-                  	{!! Form::model($user, ['route'=>['usuarios.update',$user], 'method'=>'PUT']) !!}
+                  	{!! Form::model($user, ['route'=>['usuarios.update',$user], 'method'=>'PUT', 'files'=>true]) !!}
 	                  	<div class="form-group">
 							{!! Form::label('name','Nombre:') !!}
 							{!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Ingresa el nombre del nuevo usuario']) !!}
