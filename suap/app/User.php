@@ -29,5 +29,18 @@ class User extends Model implements AuthenticatableContract,
     public function level(){
         return $this->hasOne('Suap\Level','id','level_id');
     }
+
+
+    public function setPasswordAttribute($password){
+        if(!empty($password)){
+            $this->attributes['password'] = bcrypt($password);
+        }
+    }
     
+    public function setFileIdAttribute($file){
+        if(!empty($file)){
+            $name = Carbon::now()->second.$file->getClientOriginalName();
+            \Storage::disk('local')->put($name, \File::get($file));
+        }
+    }
 }

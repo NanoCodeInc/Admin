@@ -30,7 +30,7 @@ class AuthController extends Controller
      *
      * @return void
      */
-    protected $redirectPath = '/usuarios';
+    protected $redirectPath = '/home';
     /**
      * Get a validator for an incoming registration request.
      *
