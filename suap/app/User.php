@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Carbon\Carbon;
 class User extends Model implements AuthenticatableContract,
                                     AuthorizableContract,
                                     CanResetPasswordContract
@@ -29,5 +30,18 @@ class User extends Model implements AuthenticatableContract,
     public function level(){
         return $this->hasOne('Suap\Level','id','level_id');
     }
+
+
+    public function setPasswordAttribute($password){
+        if(!empty($password)){
+            $this->attributes['password'] = bcrypt($password);
+        }
+    }
     
+    public function setFileIdAttribute($file){
+        if(!empty($file)){
+            $name = Carbon::now()->second.$file->getClientOriginalName();
+            \Storage::disk('local')->put($name, \File::get($file));
+        }
+    }
 }

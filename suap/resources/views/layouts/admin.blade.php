@@ -55,10 +55,14 @@
                   
                   <li class="user-footer">
                     <div class="pull-left">
-                      <a href="usuarios/{!! Auth::user()->id !!}/edit"><i class="fa fa-user"></i> Perfil</a>
+                      <a href="/usuarios/{!! Auth::user()->id !!}/edit" class="btn btn-primary">
+                        <i class="fa fa-user"></i>
+                        Perfil
+                      </a>
                     </div>
+
                     <div class="pull-right">
-                      <a href="{!! URL::to('auth/logout') !!}"><i class="fa fa-power-off"></i> Salir</a>
+                      <a href="{!! URL::to('/auth/logout') !!} " class="btn btn-primary" ><i class="fa fa-power-off"></i> Salir</a>
                     </div>
                   </li>
                 </ul>
