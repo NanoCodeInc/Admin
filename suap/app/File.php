@@ -8,9 +8,10 @@ class File extends Model
 {
     protected $table = 'files';
 
-
+    protected $fillable = ['path'];
+    
     public function user(){
-    	return $this->belongsTo('suap\User');
+    	return $this->belongsTo('Suap\User','id','file_id');
     }
 
     public function brand(){

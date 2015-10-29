@@ -1,6 +1,5 @@
 @extends('layouts.admin')
 	@section('content')
-<<<<<<< HEAD
 
 		{!! Form::open(['url'=>'/clients.store', 'method'=>'POST']) !!}
 
@@ -21,7 +20,6 @@
 		{!! Form::close() !!}
 
 
-=======
 	     <div class="col-md-12">
        @include('partials.alerts.success')
               <!-- Widget: user widget style 1 -->
@@ -32,7 +30,7 @@
                   <h5 class="widget-user-desc">{!! Auth::user()->level->permission !!}</h5>
                 </div>
                 <div class="widget-user-image">
-                  <img class="img-circle" src="{{ asset('../dist/img/user3-128x128.jpg') }}" alt="User Avatar">
+                  <img src="/images/{!! Auth::user()->file->path !!}" class="img-circle" alt="User Image">
                 </div>
                 <div class="box-footer">
                   <div class="row">
@@ -41,5 +39,5 @@
                 </div>
               </div><!-- /.widget-user -->
             </div><!-- /.col -->
->>>>>>> 90c5cd7d16c62eb0e152838252eb67c8f44982d4
+
 	@endsection
