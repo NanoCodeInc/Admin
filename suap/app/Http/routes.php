@@ -30,4 +30,10 @@ Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 
+<<<<<<< HEAD
 Route::resource('clients','ClientController');
+=======
+////////SERVICES
+
+Route::resource('services', 'ServiceController');
+>>>>>>> 3814cfef1257dc533b1fe4fd4bd0dd1c5d3059a1
