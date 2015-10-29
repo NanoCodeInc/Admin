@@ -18,9 +18,8 @@
 	
 
 
-
+@if(Auth::check())
     <div class="wrapper">
-
       <header class="main-header">
         <!-- Logo -->
         <a href="index2.html" class="logo">
@@ -42,25 +41,24 @@
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                  <span class="hidden-xs">Alexander Pierce</span>
+                  <span class="hidden-xs">{!! Auth::user()->name !!}</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
                     <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                     <p>
-                      Alexander Pierce - Web Developer
-                      <small>Member since Nov. 2012</small>
+                      {!! Auth::user()->name !!}
                     </p>
                   </li>
                   
                   
                   <li class="user-footer">
                     <div class="pull-left">
-                      <a href="#"><i class="fa fa-user"></i> Perfil</a>
+                      <a href="usuarios/{!! Auth::user()->id !!}/edit"><i class="fa fa-user"></i> Perfil</a>
                     </div>
                     <div class="pull-right">
-                      <a href="#"><i class="fa fa-power-off"></i> Salir</a>
+                      <a href="{!! URL::to('auth/logout') !!}"><i class="fa fa-power-off"></i> Salir</a>
                     </div>
                   </li>
                 </ul>
@@ -79,7 +77,7 @@
               <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-              <p>Alexander Pierce</p>
+              <p>{!! Auth::user()->name !!}</p>
               <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
           </div>
@@ -95,8 +93,8 @@
               </a>
 
               <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-user-plus"></i> Agregar usuario</a></li>
-                <li><a href="#"><i class="fa fa-list-ol"></i> Listar usuarios</a></li>
+                <li><a href="{!! URL::to('auth/register') !!}"><i class="fa fa-user-plus"></i> Agregar usuario</a></li>
+                <li><a href="{!! URL::to('/usuarios') !!}"><i class="fa fa-list-ol"></i> Listar usuarios</a></li>
               </ul>
             </li>
             
@@ -114,12 +112,11 @@
             <small>Panel de Control</small>
           </h1>
           <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Dashboard</li>
+            <li><a href="{!! URL::to('/home') !!}"><i class="fa fa-dashboard"></i> Home</a></li>
           </ol>
         </section>
+      @endif
 
-        
         <section class="content">
             <div class="row">
             @yield('content')    
@@ -129,7 +126,7 @@
 
 
 
-
+    @if(Auth::check())
       <footer class="main-footer">
         <div class="pull-right hidden-xs">
           <b>Version</b> 2.3.0
@@ -304,7 +301,7 @@
       <div class="control-sidebar-bg"></div>
     </div><!-- ./wrapper -->
 
-
+@endif
 
 
 
