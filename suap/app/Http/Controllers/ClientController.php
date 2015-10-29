@@ -9,6 +9,9 @@ use Suap\Http\Controllers\Controller;
 
 use Suap\Client;
 
+use Session;
+use Redirect;
+
 class ClientController extends Controller
 {
     /**
@@ -30,7 +33,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        //
+        return view('client.create');
     }
 
     /**
@@ -42,6 +45,12 @@ class ClientController extends Controller
     public function store(Request $request)
     {
         //
+        //$file = File::create(['name'=> $request['file']]);
+        $client = ['name'=> $request['name'],'address'=> $request['address'],'phone'=> $request['phone'],'work'=> $request['work'],'description'=> $request['description'],'file_id'=> 1];
+        //return $client;
+        Client::create($client);
+        Session::flash('message','Cliente Creado Correctamente.');
+        return Redirect::to('/clients');
     }
 
     /**

@@ -84,17 +84,30 @@
           
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
-            <li class="header">NAVEGACIÓN</li>
+            <li class="header">Operaciones</li>
             
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-users"></i> <span>usuario</span>
+                <i class="fa fa-users"></i> <span>Usuarios</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
 
               <ul class="treeview-menu">
                 <li><a href="{!! URL::to('auth/register') !!}"><i class="fa fa-user-plus"></i> Agregar usuario</a></li>
                 <li><a href="{!! URL::to('/usuarios') !!}"><i class="fa fa-list-ol"></i> Listar usuarios</a></li>
+              </ul>
+            </li>
+            
+            
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-users"></i> <span>Clientes</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+
+              <ul class="treeview-menu">
+                <li><a href="{!! URL::to('clients/create') !!}"><i class="fa fa-user-plus"></i> Agregar Cliente</a></li>
+                <li><a href="{!! URL::to('/clients') !!}"><i class="fa fa-list-ol"></i> Listar Clientes</a></li>
               </ul>
             </li>
             
