@@ -9,7 +9,6 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
-
 class User extends Model implements AuthenticatableContract,
                                     AuthorizableContract,
                                     CanResetPasswordContract
@@ -27,8 +26,8 @@ class User extends Model implements AuthenticatableContract,
         return $this->hasOne('suap\File');
     }
 
-    public function permission(){
-        return $this->hasOne('suap\Level');
+    public function level(){
+        return $this->hasOne('Suap\Level','id','level_id');
     }
     
 }
