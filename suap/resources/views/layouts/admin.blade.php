@@ -88,11 +88,11 @@
           
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
-            <li class="header">NAVEGACIÓN</li>
+            <li class="header">Operaciones</li>
             
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-users"></i> <span>usuario</span>
+                <i class="fa fa-users"></i> <span>Usuarios</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
 
@@ -102,13 +102,27 @@
               </ul>
             </li>
             
+<<<<<<< HEAD
+            
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-users"></i> <span>Clientes</span>
+=======
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-server"></i> <span>servicios</span>
+>>>>>>> 3814cfef1257dc533b1fe4fd4bd0dd1c5d3059a1
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
 
               <ul class="treeview-menu">
+<<<<<<< HEAD
+                <li><a href="{!! URL::to('clients/create') !!}"><i class="fa fa-user-plus"></i> Agregar Cliente</a></li>
+                <li><a href="{!! URL::to('/clients') !!}"><i class="fa fa-list-ol"></i> Listar Clientes</a></li>
+              </ul>
+            </li>
+            
+=======
                 <li><a href="{!! URL::to('/services/create') !!}"><i class="fa fa-plus"></i> Agregar servicio</a></li>
                 <li><a href="{!! URL::to('/services') !!}"><i class="fa fa-list-ol"></i> Listar servicios</a></li>
               </ul>
@@ -126,6 +140,7 @@
               </ul>
             </li>
 
+>>>>>>> 3814cfef1257dc533b1fe4fd4bd0dd1c5d3059a1
           </ul>
         </section>
         <!-- /.sidebar -->
