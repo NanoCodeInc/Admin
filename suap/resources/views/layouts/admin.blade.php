@@ -102,6 +102,30 @@
               </ul>
             </li>
             
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-server"></i> <span>servicios</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+
+              <ul class="treeview-menu">
+                <li><a href="{!! URL::to('/services/create') !!}"><i class="fa fa-plus"></i> Agregar servicio</a></li>
+                <li><a href="{!! URL::to('/services') !!}"><i class="fa fa-list-ol"></i> Listar servicios</a></li>
+              </ul>
+            </li>
+
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-server"></i> <span>marcas</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+
+              <ul class="treeview-menu">
+                <li><a href="{!! URL::to('/services/create') !!}"><i class="fa fa-plus"></i> Agregar marca</a></li>
+                <li><a href="{!! URL::to('/services') !!}"><i class="fa fa-list-ol"></i> Listar marcas</a></li>
+              </ul>
+            </li>
+
           </ul>
         </section>
         <!-- /.sidebar -->
