@@ -24,7 +24,7 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('file','Escoge la imagen del Cliente') !!}
+    {!! Form::label('file_text','Escoge la imagen del Cliente') !!}
     {!! Form::file('file') !!}
 </div>
     		

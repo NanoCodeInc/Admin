@@ -3,17 +3,26 @@
 namespace Suap\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Routing\Route;
 use Suap\Http\Requests;
 use Suap\Http\Controllers\Controller;
 
 use Suap\Client;
+use Suap\File;
 
 use Session;
 use Redirect;
 
 class ClientController extends Controller
 {
+
+    public function __construct(){
+        $this->beforeFilter('@find',['only' =>['show','edit','update','destroy']]);
+    }
+
+    public function find(Route $route){
+        $this->client = Client::findOrFail($route->getParameter('clients'));
+    }
     /**
      * Display a listing of the resource.
      *
@@ -45,8 +54,9 @@ class ClientController extends Controller
     public function store(Request $request)
     {
         //
-        //$file = File::create(['name'=> $request['file']]);
-        $client = ['name'=> $request['name'],'address'=> $request['address'],'phone'=> $request['phone'],'work'=> $request['work'],'description'=> $request['description'],'file_id'=> 1];
+        $file = File::create(['name'=> $request['file']]);
+
+        $client = ['name'=> $request['name'],'address'=> $request['address'],'phone'=> $request['phone'],'work'=> $request['work'],'description'=> $request['description'],'file_id'=> $file->id,];
         //return $client;
         Client::create($client);
         Session::flash('message','Cliente Creado Correctamente.');
@@ -70,9 +80,9 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+        return view('client.edit',['client'=>$this->client]);
     }
 
     /**
@@ -82,11 +92,15 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+ 
     public function update(Request $request, $id)
     {
-        //
+        $this->client->update($request->all());
+        $file = File::find($this->client->file_id);
+        $file->update(['name'=> $request['file']]);
+        Session::flash('message','Cliente Actualizado Correctamente.');
+        return Redirect::to('/clients');
     }
-
     /**
      * Remove the specified resource from storage.
      *
