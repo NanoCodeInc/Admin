@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: Suap
+        psr4_prefix: Suap
+        src_path: app
