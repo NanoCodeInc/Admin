@@ -10,7 +10,7 @@
                   <h5 class="widget-user-desc">{!! Auth::user()->level->permission !!}</h5>
                 </div>
                 <div class="widget-user-image">
-                  <img class="img-circle" src="{{ asset('../dist/img/user3-128x128.jpg') }}" alt="User Avatar">
+                  <img src="/images/{!! Auth::user()->file->path !!}" class="img-circle" alt="User Image">
                 </div>
                 <div class="box-footer">
                   <div class="row">

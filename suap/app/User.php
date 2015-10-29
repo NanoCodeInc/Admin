@@ -9,6 +9,8 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Carbon\Carbon;
+use Suap\File;
 class User extends Model implements AuthenticatableContract,
                                     AuthorizableContract,
                                     CanResetPasswordContract
@@ -22,8 +24,8 @@ class User extends Model implements AuthenticatableContract,
     protected $hidden = ['password', 'remember_token'];
 
 
-    public function avatar(){
-        return $this->hasOne('suap\File');
+    public function file(){
+        return $this->hasOne('Suap\File','id','file_id');
     }
 
     public function level(){
@@ -40,6 +42,8 @@ class User extends Model implements AuthenticatableContract,
     public function setFileIdAttribute($file){
         if(!empty($file)){
             $name = Carbon::now()->second.$file->getClientOriginalName();
+            $filee = File::create(["path" => $name]);
+            $this->attributes['file_id'] = $filee->id;
             \Storage::disk('local')->put($name, \File::get($file));
         }
     }

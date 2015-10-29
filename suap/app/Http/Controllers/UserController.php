@@ -3,14 +3,16 @@
 namespace Suap\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Suap\Http\Traits\FileTrait;
 use Suap\Http\Requests;
 use Suap\Http\Controllers\Controller;
 use Suap\User;
+use Suap\File;
 use Session;
 use Redirect;
 class UserController extends Controller
 {
+    use FileTrait;
     /**
      * Display a listing of the resource.
      *
