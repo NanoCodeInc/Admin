@@ -3,13 +3,16 @@
 namespace Suap\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Suap\Http\Traits\FileTrait;
 use Suap\Http\Requests;
 use Suap\Http\Controllers\Controller;
 use Suap\User;
+use Suap\File;
+use Session;
 use Redirect;
 class UserController extends Controller
 {
+    use FileTrait;
     /**
      * Display a listing of the resource.
      *
@@ -61,7 +64,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('user.edit',compact('user'));
     }
 
     /**
@@ -73,7 +77,10 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $user->update($request->all());
+        Session::flash('message','Tu informacion personal se actualizo satisfactoriamente.');
+        return Redirect::to('/home');
     }
 
     /**

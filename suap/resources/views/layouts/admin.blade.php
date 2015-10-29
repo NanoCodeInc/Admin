@@ -40,13 +40,13 @@
              <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                <img src="/images/{!! Auth::user()->file->path !!}" class="user-image" alt="User Image">
                   <span class="hidden-xs">{!! Auth::user()->name !!}</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
-                    <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                  <img src="/images/{!! Auth::user()->file->path !!}" class="img-circle" alt="User Image">
                     <p>
                       {!! Auth::user()->name !!}
                     </p>
@@ -55,10 +55,14 @@
                   
                   <li class="user-footer">
                     <div class="pull-left">
-                      <a href="usuarios/{!! Auth::user()->id !!}/edit"><i class="fa fa-user"></i> Perfil</a>
+                      <a href="/usuarios/{!! Auth::user()->id !!}/edit" class="btn btn-primary">
+                        <i class="fa fa-user"></i>
+                        Perfil
+                      </a>
                     </div>
+
                     <div class="pull-right">
-                      <a href="{!! URL::to('auth/logout') !!}"><i class="fa fa-power-off"></i> Salir</a>
+                      <a href="{!! URL::to('/auth/logout') !!} " class="btn btn-primary" ><i class="fa fa-power-off"></i> Salir</a>
                     </div>
                   </li>
                 </ul>
@@ -74,7 +78,7 @@
           <!-- Sidebar user panel -->
           <div class="user-panel">
             <div class="pull-left image">
-              <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+              <img src="/images/{!! Auth::user()->file->path !!}" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
               <p>{!! Auth::user()->name !!}</p>
