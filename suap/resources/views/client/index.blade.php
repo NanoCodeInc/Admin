@@ -1,6 +1,6 @@
 @extends('layouts.admin')	
 	@section('content')
-  @include('partials.alerts.errors')
+  @include('partials.alerts.success')
 
 
    <section class="content">
@@ -14,12 +14,14 @@
                 <table class="table">
       <thead>
         <tr>
-          <th>Nombre de la compañia</th>
+          <th>Cliente</th>
           <th>Dirección</th>
           <th>Telefono</th>
+
           <th>Compañia</th>
-          <th>Nombre del trabajo Realizado</th>
           <th>Descripción del trabajo realizado</th>
+          
+          
         <tr>
       </thead>
       <tbody>
@@ -34,7 +36,7 @@
 
 
 
-          <td>{!!$client->file_id!!}</td>
+
           <td>{!!link_to_route('clients.edit', $title = 'Editar', $parameters = $client->id, $attributes = ['class'=>'btn btn-primary button-striped btn-ripple button-full-striped'])!!}</td>
         </tr>
       @endforeach

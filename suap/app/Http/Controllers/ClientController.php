@@ -3,8 +3,9 @@
 namespace Suap\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Routing\Route;
+
 use Suap\Http\Requests;
+use Suap\Http\Requests\ClientRequest; 
 use Suap\Http\Controllers\Controller;
 
 use Suap\Client;
@@ -12,6 +13,9 @@ use Suap\File;
 
 use Session;
 use Redirect;
+
+
+
 
 class ClientController extends Controller
 {
