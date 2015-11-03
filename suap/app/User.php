@@ -41,12 +41,5 @@ class User extends Model implements AuthenticatableContract,
         }
     }
     
-    public function setFileIdAttribute($file){
-        if(!empty($file)){
-            $name = Carbon::now()->second.$file->getClientOriginalName();
-            $filee = File::create(["path" => $name]);
-            $this->attributes['file_id'] = $filee->id;
-            \Storage::disk('local')->put($name, \File::get($file));
-        }
-    }
+    
 }

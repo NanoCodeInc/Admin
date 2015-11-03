@@ -2,6 +2,7 @@
 	@section('content')
 	       <div class="col-md-6">
               <!-- Custom Tabs (Pulled to the right) -->
+              @include('partials.alerts.errors')
               <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs pull-right">
                   <li class="active"><a href="#tab_1-1" data-toggle="tab"><i class="fa fa-info"></i></a></li>
@@ -15,11 +16,15 @@
                   	{!! Form::model($user, ['route'=>['usuarios.update',$user], 'method'=>'PUT', 'files' => true]) !!}
 
 
-	                  	<div class="form-group">
+	                  	<div class="form-group {!! $errors->has('name') ? 'has-error' : '' !!}">
+	                  	{!! $errors->first('name','<label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i></label>') !!}
+	                  	
 							{!! Form::label('name','Nombre:') !!}
 							{!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Ingresa el nombre del nuevo usuario']) !!}
+							 
 						</div>
-						<div class="form-group">
+						<div class="form-group {!! $errors->has('lastname') ? 'has-error' : '' !!}">
+						{!! $errors->first('lastname','<label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i></label>') !!}
 						  	{!! Form::label('lastname','Apellidos:') !!}
 							{!! Form::text('lastname', null, ['class' => 'form-control', 'placeholder' => 'Ingresa los apellidos del nuevo usuario']) !!}
 						</div>
@@ -41,7 +46,8 @@
 						{!! Form::label('password_confirmation','Contraseña:') !!}
 						{!! Form::password('password_confirmation', ['class' => 'form-control', 'placeholder' => 'Confirma la contraseña']) !!}
 					</div>
-                  </div><!-- /.tab-pane -->
+
+				</div><!-- /.tab-pane -->
                   {!! Form::submit('Actualizar información',['class'=>'btn btn-primary']) !!}
 					{!! Form::close() !!}
                 </div><!-- /.tab-content -->
