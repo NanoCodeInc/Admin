@@ -33,3 +33,4 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 ////////SERVICES
 
 Route::resource('services', 'ServiceController');
+Route::resource('brands', 'BrandController');

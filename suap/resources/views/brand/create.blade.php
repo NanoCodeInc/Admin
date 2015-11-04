@@ -6,9 +6,9 @@
 				<div class="col-md-6">
 					<div class="box box-primary">
 						<div class="box-header with-border">
-							<h3 class="box-title"><i class="fa fa-plus-square"></i> Crear Servicio</h3>
-								{!!Form::open(['route'=>'services.store','method'=>'POST','files'=>true])!!}
-									@include('service.form.service')
+							<h3 class="box-title"><i class="fa fa-plus-square"></i> Crear Marca</h3>
+								{!!Form::open(['route'=>'brands.store','method'=>'POST','files'=>true])!!}
+									@include('brand.form.brand')
 									<div class="box-footer">
 										{!! Form::submit('Crear', ['class'=>'btn btn-primary']) !!}
 									</div>

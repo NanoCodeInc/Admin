@@ -5,21 +5,20 @@ namespace Suap\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Suap\Http\Requests;
-use Suap\Http\Requests\ServiceRequest;
-use Suap\Http\Requests\ServiceUpdateRequest;
+use Suap\Http\Requests\BrandRequest;
+use Suap\Http\Requests\BrandUpdateRequest;
 use Suap\Http\Controllers\Controller;
-use Suap\Service;
-use File;
+use Suap\Brand;
 
-class ServiceController extends Controller
+class BrandController extends Controller
 {
 
-    public function __construct(){
-        $this->beforeFilter('@find',['only' =>['show','edit','update','destroy']]);
+    public function __construct() {
+        $this->beforeFilter('@find', ['only' => ['show','edit','update','destroy']]);
     }
 
-    public function find(Route $route){
-        $this->service = Service::findOrFail($route->getParameter('services'));
+    public function find() {
+        $this->brand = Brand::findOrFail($route->getParameter('brands'));
     }
 
     /**
@@ -29,8 +28,8 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services = Service::all();
-        return view('service.index',compact('services'));
+        $brands = Brand::all();
+        return view('brand.index',compact('brands'));
     }
 
     /**
@@ -40,7 +39,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        return view('service.create');
+        return view('brand.create');
     }
 
     /**
@@ -49,18 +48,15 @@ class ServiceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ServiceRequest $request)
+    public function store(BrandRequest $request)
     {
-        //$file = File::create(['name'=> $request['file']]);
-
-        $serv = [
-            'name'=> $request['title'],
-            'description'=> $request['description'],
+        $br = [
+            'name'=> $request['name'],
             //'file_id'=> $file->id,
             'file_id'=> $request['file'],
             ];
 
-        return $serv;
+        return $br;
     }
 
     /**
@@ -82,7 +78,7 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
-        return view('service.edit',['service'=>$this->service]);
+        return view('brand.edit',['brand'=>$this->brand]);
     }
 
     /**
@@ -92,9 +88,9 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ServiceUpdateRequest $request, $id)
+    public function update(BrandUpdateRequest $request, $id)
     {
-        $this->service->update($request->all());
+        $this->brand->update($request->all());
         $file = File::find($this->service->file_id);
         $file->update(['name'=> $request['file']]);
         return "Actualizado";

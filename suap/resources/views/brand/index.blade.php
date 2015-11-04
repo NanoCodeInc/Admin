@@ -5,7 +5,7 @@
 
 			<div class="box">
 				<div class="box-header">
-					<h3 class="box-title"><i class="fa fa-server"></i> Servicios</h3>
+					<h3 class="box-title"><i class="fa fa-industry"></i> Marcas</h3>
 					<div class="box-tools">
 						<div class="input-group" style="width: 150px;">
 							<input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Search">
@@ -19,15 +19,13 @@
 					<table class="table table-hover">
 						<tr>
 							<th>Nombre</th>
-							<th>Descripcion</th>
-							<th>Archivo</th>
+							<th>Imagen</th>
 							<th>Acciones</th>
 						</tr>
-						@foreach($services as $service)
+						@foreach($brands as $brand)
 							<tr>
-								<td>{!!$service->title!!}</td>
-								<td>{!!$service->description!!}</td>
-								<td>{!!$service->file_id!!}</td>
+								<td>{!!$brand->name!!}</td>
+								<td>{!!$brand->file_id!!}</td>
 								<td>
 			                        <div class="btn-group">
 			                        	<button type="button" class="btn btn-info"><i class="fa fa-pencil"></i></button>
