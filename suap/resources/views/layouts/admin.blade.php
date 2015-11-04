@@ -78,11 +78,10 @@
           <!-- Sidebar user panel -->
           <div class="user-panel">
             <div class="pull-left image">
-              <img src="/images/{!! Auth::user()->file->path !!}" class="img-circle" alt="User Image">
+            {!!Html::image('/images/suap-logo.png')!!}
             </div>
             <div class="pull-left info">
-              <p>{!! Auth::user()->name !!}</p>
-              <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+              <h3>SUAP</h3>
             </div>
           </div>
           
@@ -102,10 +101,35 @@
               </ul>
             </li>
             
+<<<<<<< HEAD
+=======
+
+>>>>>>> b6f536da86df9048f9169e208d68ea7161392c35
             
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-users"></i> <span>Clientes</span>
+<<<<<<< HEAD
+
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-server"></i> <span>servicios</span>
+
+=======
+>>>>>>> b6f536da86df9048f9169e208d68ea7161392c35
+                <i class="fa fa-angle-left pull-right"></i>
+                </a>
+
+              <ul class="treeview-menu">
+
+                <li><a href="{!! URL::to('clients/create') !!}"><i class="fa fa-user-plus"></i> Agregar Cliente</a></li>
+                <li><a href="{!! URL::to('/clients') !!}"><i class="fa fa-list-ol"></i> Listar Clientes</a></li>
+              </ul>
+            </li>
+<<<<<<< HEAD
+            
+=======
+
 
             <li class="treeview">
               <a href="#">
@@ -115,17 +139,16 @@
               </a>
 
               <ul class="treeview-menu">
-
-                <li><a href="{!! URL::to('clients/create') !!}"><i class="fa fa-user-plus"></i> Agregar Cliente</a></li>
-                <li><a href="{!! URL::to('/clients') !!}"><i class="fa fa-list-ol"></i> Listar Clientes</a></li>
-              </ul>
-            </li>
-            
+>>>>>>> b6f536da86df9048f9169e208d68ea7161392c35
 
                 <li><a href="{!! URL::to('/services/create') !!}"><i class="fa fa-plus"></i> Agregar servicio</a></li>
                 <li><a href="{!! URL::to('/services') !!}"><i class="fa fa-list-ol"></i> Listar servicios</a></li>
               </ul>
             </li>
+            
+
+                
+              
 
             <li class="treeview">
               <a href="#">
@@ -139,7 +162,10 @@
               </ul>
             </li>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> b6f536da86df9048f9169e208d68ea7161392c35
           </ul>
         </section>
         <!-- /.sidebar -->
@@ -365,6 +391,16 @@
     {!! Html::script('js/fastclick.min.js') !!}
     <!-- AdminLTE App -->
     {!! Html::script('js/app.min.js') !!}
+
+    {!! Html::script('js/Angular/angular.min.js') !!}
+    {!! Html::script('js/Angular/angular-resource.js') !!}
+    {!! Html::script('js/Angular/angular-messages.min.js') !!}
+    {!! Html::script('js/Angular/angular-cookies.min.js') !!}
+    {!! Html::script('js/Angular/ui-bootstrap-tpls-0.14.3.min.js') !!}
+    
+    @section('scripts')
+    @show
+
     
 </body>
 </html>

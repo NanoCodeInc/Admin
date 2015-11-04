@@ -2,9 +2,11 @@
 
 namespace Suap\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use Suap\Http\Traits\FileTrait;
 use Suap\Http\Requests;
+use Suap\Http\Requests\UserCreateRequest;
 use Suap\Http\Controllers\Controller;
 use Suap\User;
 use Suap\File;
@@ -18,9 +20,12 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $users = User::all();
+        if ($request->ajax()){
+            return response()->json(User::all());
+        }
         return view('user.index',['users'=>$users]);
     }
 
@@ -75,7 +80,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserCreateRequest $request, $id)
     {
         $user = User::find($id);
         $user->update($request->all());

@@ -21,6 +21,10 @@ Route::get('home',function(){
 });
 
 Route::resource('usuarios','UserController');
+
+Route::get('ruta',function(){
+	return response()->json(Suap\User::all());
+});
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
@@ -30,8 +34,6 @@ Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 
-
 Route::resource('clients','ClientController');
-
 Route::resource('services', 'ServiceController');
 
