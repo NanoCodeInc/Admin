@@ -14,11 +14,11 @@ class CreateEnterprisesTable extends Migration
     {
         Schema::create('enterprises', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('description');
-            $table->string('mision');
-            $table->string('vision');
-            $table->integer('file_id')->unsigned();
+            $table->string('name')->nullable();
+            $table->string('description')->nullable();
+            $table->string('mision')->nullable();
+            $table->string('vision')->nullable();
+            $table->integer('file_id')->unsigned()->nullable();
             $table->foreign('file_id')->references('id')->on('files');
             $table->timestamps();
         });

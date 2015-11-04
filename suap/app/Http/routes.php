@@ -21,6 +21,7 @@ Route::get('home',function(){
 });
 
 Route::resource('usuarios','UserController');
+Route::resource('acerca','AboutController');
 
 Route::get('ruta',function(){
 	return response()->json(Suap\User::all());

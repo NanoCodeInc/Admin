@@ -89,6 +89,12 @@
           <ul class="sidebar-menu">
             <li class="header">Operaciones</li>
             
+
+            <li>
+            <a href="">
+            <i class="fa fa-users"></i>
+            Empresa</a>
+            </li>
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-users"></i> <span>Usuarios</span>
