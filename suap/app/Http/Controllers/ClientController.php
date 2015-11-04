@@ -2,31 +2,28 @@
 
 namespace Suap\Http\Controllers;
 
-
 use Illuminate\Http\Request;
-use Suap\Http\Traits\FileTrait;
+
 use Suap\Http\Requests;
-use Suap\Http\Requests\UserCreateRequest;
 use Suap\Http\Controllers\Controller;
-use Suap\User;
-use Suap\File;
+
+use Suap\Client;
+
 use Session;
 use Redirect;
-class UserController extends Controller
+
+class ClientController extends Controller
 {
-    use FileTrait;
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $users = User::all();
-        if ($request->ajax()){
-            return response()->json(User::all());
-        }
-        return view('user.index',['users'=>$users]);
+        $clients = Client::all();
+        return view('client.index',compact('clients'));
+        
     }
 
     /**
@@ -36,7 +33,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('client.create');
     }
 
     /**
@@ -48,6 +45,12 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+        //$file = File::create(['name'=> $request['file']]);
+        $client = ['name'=> $request['name'],'address'=> $request['address'],'phone'=> $request['phone'],'work'=> $request['work'],'description'=> $request['description'],'file_id'=> 1];
+        //return $client;
+        Client::create($client);
+        Session::flash('message','Cliente Creado Correctamente.');
+        return Redirect::to('/clients');
     }
 
     /**
@@ -69,8 +72,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
-        return view('user.edit',compact('user'));
+        //
     }
 
     /**
@@ -80,12 +82,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UserCreateRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $user = User::find($id);
-        $user->update($request->all());
-        Session::flash('message','Tu informacion personal se actualizo satisfactoriamente.');
-        return Redirect::to('/home');
+        //
     }
 
     /**

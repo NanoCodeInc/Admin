@@ -10,6 +10,10 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Carbon\Carbon;
+<<<<<<< HEAD
+=======
+
+>>>>>>> b6f536da86df9048f9169e208d68ea7161392c35
 use Suap\File;
 
 class User extends Model implements AuthenticatableContract,
@@ -40,12 +44,5 @@ class User extends Model implements AuthenticatableContract,
         }
     }
     
-    public function setFileIdAttribute($file){
-        if(!empty($file)){
-            $name = Carbon::now()->second.$file->getClientOriginalName();
-            $filee = File::create(["path" => $name]);
-            $this->attributes['file_id'] = $filee->id;
-            \Storage::disk('local')->put($name, \File::get($file));
-        }
-    }
+    
 }

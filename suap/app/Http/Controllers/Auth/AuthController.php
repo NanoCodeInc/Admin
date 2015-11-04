@@ -3,6 +3,7 @@
 namespace Suap\Http\Controllers\Auth;
 
 use Suap\User;
+use Suap\File;
 use Validator;
 use Illuminate\Http\Request;
 use Suap\Http\Controllers\Controller;
@@ -55,11 +56,15 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
+        $file = File::create([
+            'path' => 'avatar-admin-suap.png'
+            ]);
+
         return User::create([
             'name' => $data['name'],
             'lastname' => $data['lastname'],
             'level_id' => 1,
-            'file_id' => 1,
+            'file_id' => $file->id,
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
@@ -75,7 +80,7 @@ public function postRegister(Request $request)
             );
         }
         $this->create($request->all());
-        Session::flash('message','Usuario registrado correctamente');
-        return redirect($this->redirectPath());
+        //Session::flash('message','Usuario registrado correctamente');
+        //return redirect($this->redirectPath());
     }
 }
